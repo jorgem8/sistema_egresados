@@ -1,0 +1,84 @@
+CREATE DATABASE seguimiento_egresados
+
+CREATE TABLE Egresado
+(
+    id varchar(20) NOT NULL PRIMARY KEY
+)
+
+CREATE TABLE HistorialAcceso
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_egresado varchar(20) NOT NULL REFERENCES Egresado(id),
+    fecha date NOT NULL
+)
+
+CREATE TABLE Carrera
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre varchar(20) NOT NULL
+)
+
+CREATE TABLE Generacion
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    periodo varchar(20) NOT NULL
+)
+
+CREATE TABLE DatosPersonales
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_egresado varchar(20) NOT NULL REFERENCES Egresado(id),
+    nombres varchar(20) NOT NULL,
+    apellidos varchar(20) NOT NULL,
+    fecha_nacimiento date NOT NULL,
+    curp varchar(20) NOT NULL,
+    telefono varchar(20) NOT NULL,
+    completado boolean NOT NULL
+)
+
+CREATE TABLE DatosEscolares
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_egresado varchar(20) NOT NULL REFERENCES Egresado(id),
+    numero_control varchar(20) NOT NULL,
+    id_carrera int NOT NULL REFERENCES Carrera(id),
+    id_generacion int NOT NULL REFERENCES Generacion(id),
+    completado boolean NOT NULL
+)
+
+CREATE TABLE DatosProfesionales
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_egresado varchar(20) NOT NULL REFERENCES Egresado(id),
+    segundo_idioma varchar(20) NOT NULL,
+    empresa varchar(20) NOT NULL, 
+    completado boolean NOT NULL
+)
+
+CREATE TABLE Encuesta
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    tipo_encuesta varchar(20) NOT NULL
+)
+
+CREATE TABLE Pregunta
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_encuesta varchar(20) NOT NULL REFERENCES Encuesta(id),
+    pregunta varchar(20) NOT NULL
+)
+
+CREATE TABLE Opcion
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_pregunta varchar(20) NOT NULL REFERENCES Pregunta(id),
+    opcion varchar(20) NOT NULL
+)
+
+CREATE TABLE Respuesta
+(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_egresado varchar(20) NOT NULL REFERENCES Egresado(id),
+    id_pregunta varchar(20) NOT NULL REFERENCES Pregunta(id),
+    id_opcion varchar(20) NOT NULL REFERENCES Opcion(id)
+)

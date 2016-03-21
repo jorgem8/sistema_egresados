@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; }
+
+footer {
+	font-size: 12px; }
+
+main {
+	align-items: center;
+	background-attachment: fixed;
+	background-image: url(../IMAGES/background.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	flex: 1 0 auto; }
+
+@media only screen and(max-width: 767px) {
+	body {
+		background-image: url(../IMAGES/backgroundMobile.jpg); }
+ }
