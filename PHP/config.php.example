@@ -1,0 +1,21 @@
+<?php
+
+//Setup for database connections
+
+$config['db_username'] = "";
+$config['db_password'] = "";
+$config['db_name'] = "sistema_egresados";
+$config['db_server'] = "localhost";
+
+//Setup for email connections
+
+$config['smtp_username'] = "";
+$config['smtp_password'] = "";
+$config['smtp_host'] = "smtp.gmail.com";
+$config['smtp_port'] = 587;
+$config['smtp_subject'] = "Sistema de egresados";
+$config['smtp_from'] = "Sistema de egresados";
+
+
+
+?>
